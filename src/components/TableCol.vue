@@ -11,18 +11,18 @@
             </th>
           </draggable>
         </thead>
-        <tbody>
+        
           
-          <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false">
+          <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="tbody">
              <tr v-for="item in list" :key="item.name">
               <td v-for="header in headers" :key="header">{{ item[header] }}</td>
             </tr>
           </draggable>
 
-          <tr v-for="item in list" :key="item.name">
+          <!-- <tr v-for="item in list" :key="item.name">
             <td v-for="header in headers" :key="header">{{ item[header] }}</td>
-          </tr>
-        </tbody>
+          </tr> -->
+        
       </table>
     </div>
 
