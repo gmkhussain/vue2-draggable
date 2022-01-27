@@ -2,7 +2,7 @@
   <div class="hello">
     
     <p>{{ msg }}</p>
-    <table class="table" border="1" id="tt">
+    <table class="table" border="1" id="table">
       <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false">
           <tr v-for="element in myArray" :key="element.id">
             <td>{{element.id}}</td>
