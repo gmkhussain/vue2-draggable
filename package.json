@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "jquery": "^3.6.0",
     "vue": "^2.6.11",
+    "vue-columns-resizable": "^0.0.1",
     "vuedraggable": "^2.24.3"
   },
   "devDependencies": {

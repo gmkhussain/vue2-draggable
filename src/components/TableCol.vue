@@ -4,6 +4,7 @@
       <h3>Draggable table</h3>
 
       <table class="table table-striped" border="1">
+        
         <thead class="thead-dark">
           <draggable v-model="headers" tag="tr">
             <th v-for="header in headers" :key="header" scope="col">
@@ -13,15 +14,15 @@
         </thead>
         
           
-          <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="tbody">
-             <tr v-for="item in list" :key="item.name">
-              <td v-for="header in headers" :key="header">{{ item[header] }}</td>
-            </tr>
-          </draggable>
-
-          <!-- <tr v-for="item in list" :key="item.name">
+        <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="tbody">
+          <tr v-for="item in list" :key="item.name">
             <td v-for="header in headers" :key="header">{{ item[header] }}</td>
-          </tr> -->
+          </tr>
+        </draggable>
+
+        <!-- <tr v-for="item in list" :key="item.name">
+          <td v-for="header in headers" :key="header">{{ item[header] }}</td>
+        </tr> -->
         
       </table>
     </div>

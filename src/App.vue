@@ -1,6 +1,10 @@
 <template>
   <div id="app">
 
+    <TableResize />
+
+    <hr />
+
     <TableRow msg="table" />
 
     <hr/>
@@ -13,12 +17,14 @@
 <script>
 import TableRow from './components/TableRow.vue'
 import TableCol from './components/TableCol.vue'
+import TableResize from './components/TableResize.vue'
 
 export default {
   name: 'App',
   components: {
     TableRow,
-    TableCol
+    TableCol,
+    TableResize
   }
 }
 </script>

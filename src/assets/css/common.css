@@ -1,0 +1,23 @@
+.table-div .tr.sortable-chosen .td {
+    border-top: 1px solid #227de6 !important;
+  }
+  
+  .table-div { display: table; }
+  
+  .table-div .tbody { display: table-row-group; }
+  
+  .table-div .tr {
+    display: table-row;
+  }
+  
+  .table-div .td {
+    display: table-cell;
+    border: 1px solid #e7e7e7;
+    padding: 4px 10px;
+    margin-left: -1px;
+    margin-top: -1px;
+  }
+  
+  .table-div .td:hover {
+    border: 1px solid #979797;
+  }
