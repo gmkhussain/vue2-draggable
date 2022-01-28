@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8">
       
-      <h4>Draggable COL table</h4>
+      <h4>Draggable COL x ROW table</h4>
 
       <div class="table table-div" border="1">
         
@@ -14,11 +14,13 @@
           </draggable>
         </div>
         
+          
+        <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
+          <div v-for="item in list" :key="item.name" class="tr">
+            <div class="td" v-for="header in headers" :key="header">{{ item[header] }}</div>
+          </div>
+        </draggable>
 
-        <tr v-for="item in list" :key="item.name">
-          <td v-for="header in headers" :key="header">{{ item[header] }}</td>
-        </tr>
-        
       </div>
 
     </div>

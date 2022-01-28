@@ -26,10 +26,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ```js
-npm install --legacy-peer-deps
+npm install --legacy-peer-deps 👈
 ```
 
-- [x] Table Draggable
+- [x] Table Draggable 
 - - [x] Row
 - - [x] Col
 - - [x] Row x Col
@@ -41,3 +41,7 @@ npm install --legacy-peer-deps
 
 - [ ] Table Resizer
 - - [ ]
+
+
+- [ ] Customize
+- - [ ] Offcanvas dynamically toggle on click event

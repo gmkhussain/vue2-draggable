@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     
+    <h4>Draggable ROW table</h4>
+
     <p>{{ msg }}</p>
     <div class="table table-div" border="1" id="table">
       <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" class="tbody">

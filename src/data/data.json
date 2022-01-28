@@ -1,37 +1,87 @@
 [
-    {
-        "id": 1,
-        "name": "Alex",
-        "date": "2018",
-        "city": "Paris",
-        "country": "France"
-    },
-    {
-        "id": 2,
-        "name": "Belly",
-        "date": "2020",
-        "city": "Tokyo",
-        "country": "Japan"
-    },
-    {
-        "id": 3,
-        "name": "Cody",
-        "date": "2020",
-        "city": "Osaka",
-        "country": "Japan"
-    },
-    {
-        "id": 4,
-        "name": "Deo",
-        "date": "2021",
-        "city": "London",
-        "country": "UK"
-    },
-    {
-        "id": 5,
-        "name": "Elle",
-        "date": "2021",
-        "city": "Liverpool",
-        "country": "UK"
+   {
+       "id": 1,
+       "school_name": "ABC High School",
+       "date": "2020",
+       "status": "open",
+       "rating": 5,
+       "students": [
+                    {
+                        "id": 1,
+                        "name": "Alex",
+                        "date": "2018",
+                        "city": "Paris",
+                        "country": "France"
+                    },
+                    {
+                        "id": 2,
+                        "name": "Belly",
+                        "date": "2020",
+                        "city": "Tokyo",
+                        "country": "Japan"
+                    },
+                    {
+                        "id": 3,
+                        "name": "Cody",
+                        "date": "2020",
+                        "city": "Osaka",
+                        "country": "Japan"
+                    },
+                    {
+                        "id": 4,
+                        "name": "Deo",
+                        "date": "2021",
+                        "city": "London",
+                        "country": "UK"
+                    },
+                    {
+                        "id": 5,
+                        "name": "Elle",
+                        "date": "2021",
+                        "city": "Liverpool",
+                        "country": "UK"
+                    }
+            ]
+   },
+   {
+    "id": 1,
+    "school_name": "XYZ High School",
+    "students": [
+                 {
+                     "id": 1,
+                     "name": "Alex",
+                     "date": "2018",
+                     "city": "Paris",
+                     "country": "France"
+                 },
+                 {
+                     "id": 2,
+                     "name": "Belly",
+                     "date": "2020",
+                     "city": "Tokyo",
+                     "country": "Japan"
+                 },
+                 {
+                     "id": 3,
+                     "name": "Cody",
+                     "date": "2020",
+                     "city": "Osaka",
+                     "country": "Japan"
+                 },
+                 {
+                     "id": 4,
+                     "name": "Deo",
+                     "date": "2021",
+                     "city": "London",
+                     "country": "UK"
+                 },
+                 {
+                     "id": 5,
+                     "name": "Elle",
+                     "date": "2021",
+                     "city": "Liverpool",
+                     "country": "UK"
+                 }
+         ]
     }
 ]
