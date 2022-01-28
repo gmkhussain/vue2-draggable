@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import './assets/css/common.css';
+import './assets/styles/common.css';
 
 import VueColumnsResizable from 'vue-columns-resizable';
 

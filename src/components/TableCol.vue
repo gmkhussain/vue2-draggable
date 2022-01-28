@@ -36,6 +36,7 @@
 
 <script>
 import draggable from "vuedraggable";
+import jsonLocalData from "../data/data.json";
 
 export default {
   name: "TablCol",
@@ -46,13 +47,8 @@ export default {
   },
   data() {
     return {
-      headers: ["id", "name", "sport"],
-      list: [
-        { id: 1, name: "Abby", sport: "basket" },
-        { id: 2, name: "Brooke", sport: "foot" },
-        { id: 3, name: "Courtenay", sport: "volley" },
-        { id: 4, name: "David", sport: "rugby" }
-      ],
+      headers: ["id", "name", "date", "city", "country"],
+      list: jsonLocalData,
       dragging: false
     };
   }
