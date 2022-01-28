@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "school_id": 1,
+        "name": "Zeo",
+        "date": "2022",
+        "city": "New York",
+        "country": "USA"
+    },
+    {
+        "id": 2,
+        "school_id": 2,
+        "name": "Xena",
+        "date": "2017",
+        "city": "Tokyo",
+        "country": "Japan"
+    },
+    {
+        "id": 3,
+        "school_id": 2,
+        "name": "Max",
+        "date": "2019",
+        "city": "Berlin",
+        "country": "Germany"
+    },
+    {
+        "id": 4,
+        "school_id": 1,
+        "name": "Robert",
+        "date": "2020",
+        "city": "London",
+        "country": "UK"
+    },
+    {
+        "id": 5,
+        "school_id": 1,
+        "name": "Andy",
+        "date": "2021",
+        "city": "Liverpool",
+        "country": "UK"
+    }
+]
