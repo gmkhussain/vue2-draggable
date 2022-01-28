@@ -1,15 +1,20 @@
+.table-div .th.sortable-chosen {
+  border-left: 1px solid #227de6 !important;
+}
 .table-div .tr.sortable-chosen .td {
-    border-top: 1px solid #227de6 !important;
-  }
+  border-top: 1px solid #227de6 !important;
+}
   
   .table-div { display: table; }
   
+  .table-div .thead,
   .table-div .tbody { display: table-row-group; }
   
   .table-div .tr {
     display: table-row;
   }
   
+  .table-div .th,
   .table-div .td {
     display: table-cell;
     border: 1px solid #e7e7e7;

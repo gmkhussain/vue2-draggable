@@ -3,28 +3,29 @@
     <div class="col-8">
       <h3>Draggable table</h3>
 
-      <table class="table table-striped" border="1">
+      <div class="table table-div" border="1">
         
-        <thead class="thead-dark">
-          <draggable v-model="headers" tag="tr">
-            <th v-for="header in headers" :key="header" scope="col">
+        <div class="thead">
+          <draggable v-model="headers" tag="div" class="tr">
+            <div v-for="header in headers" :key="header" scope="col" class="th">
               {{ header }}
-            </th>
+            </div>
           </draggable>
-        </thead>
+        </div>
         
           
-        <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="tbody">
-          <tr v-for="item in list" :key="item.name">
-            <td v-for="header in headers" :key="header">{{ item[header] }}</td>
-          </tr>
+        <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
+          <div v-for="item in list" :key="item.name" class="tr">
+            <div class="td" v-for="header in headers" :key="header">{{ item[header] }}</div>
+          </div>
         </draggable>
 
         <!-- <tr v-for="item in list" :key="item.name">
           <td v-for="header in headers" :key="header">{{ item[header] }}</td>
         </tr> -->
         
-      </table>
+      </div>
+
     </div>
 
     <rawDisplayer class="col-2" :value="list" title="List" />
