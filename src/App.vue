@@ -1,6 +1,10 @@
 <template>
   <div id="app">
 
+    <Customize />
+    
+    <hr />
+
     <TableColxRowNested />
 
     <hr />
@@ -31,6 +35,8 @@ import TableCol from './components/TableCol.vue'
 import TableColxRow from './components/TableColxRow.vue'
 import TableResize from './components/TableResize.vue'
 
+import Customize from './components/Customize.vue'
+
 export default {
   name: 'App',
   components: {
@@ -38,7 +44,8 @@ export default {
     TableCol,
     TableColxRow,
     TableResize,
-    TableColxRowNested
+    TableColxRowNested,
+    Customize
   }
 }
 </script>

@@ -38,8 +38,8 @@ npm install --legacy-peer-deps 👈
 - - [ ] with Dynamic Inner HTML Element
 - - [ ] Lock Cell
 - - [ ] Lock inside Table: Not able to drag out of current table
-- - [ ] Preview stick on previous position
-- - [ ] Preview sync with new position
+- - [ ] Preview stick on previous position 
+- - [ ] Preview sync with new position ( High Light LINE on DROP POSITION )
 
 - [ ] Table Resizer
 - - [ ]
@@ -47,3 +47,5 @@ npm install --legacy-peer-deps 👈
 
 - [ ] Customize
 - - [ ] Offcanvas dynamically toggle on click event
+- - [ ] Col Visiable: [ Show / Hide ]
+- - [ ] Col Order: [ Move / Down ]
