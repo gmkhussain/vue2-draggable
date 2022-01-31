@@ -4,7 +4,7 @@
       
       <h4>Draggable COL x ROW table</h4>
 
-      <div class="table table-div" border="1">
+      <div class="table table-div">
         
         <div class="thead">
           <draggable v-model="headers" tag="div" class="tr">
@@ -17,7 +17,21 @@
           
         <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
           <div v-for="item in list" :key="item.name" class="tr">
-            <div class="td" v-for="header in headers" :key="header">{{ item[header] }}</div>
+            <div class="td" v-for="header in headers" :key="header">
+              
+              <div v-if="header=='id'">
+                <h4>~ID</h4> {{item[header]}}
+              </div>
+              
+              <div v-if="header=='date'">
+                <h4>~DATE</h4> {{item[header]}}
+              </div>
+
+              <div v-else>
+                {{ item[header] }}
+              </div>
+
+            </div>
           </div>
         </draggable>
 

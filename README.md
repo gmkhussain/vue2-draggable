@@ -34,6 +34,8 @@ npm install --legacy-peer-deps 👈
 - - [x] Col
 - - [x] Row x Col
 - - [x] Div Base Table
+- - [x] with Static Inner HTML Element
+- - [ ] with Dynamic Inner HTML Element
 - - [ ] Lock Cell
 - - [ ] Lock inside Table: Not able to drag out of current table
 - - [ ] Preview stick on previous position

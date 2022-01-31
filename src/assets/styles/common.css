@@ -1,3 +1,6 @@
+.w-100 {
+  width: 100%;
+}
 .table-div .th.sortable-chosen {
   border-left: 1px solid #227de6 !important;
 }
