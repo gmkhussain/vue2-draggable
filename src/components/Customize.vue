@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="box">
         <ul>
             <li v-for="(col, index) in cols" :key="index">
                 <span>{{col.name}}</span>
@@ -7,7 +7,8 @@
                     {{col.isVisible}}
                     <input type="checkbox"
                         :value="col.isVisible"
-                        :checked="col.isvisible ? true : false"
+                        :checked="col.isVisible ? true : false"
+                        @change="updateCols(index, !col.isVisible)"
                      />
                 </label>
             </li>
@@ -45,6 +46,38 @@ export default {
             ]
 
         }
+    },
+    methods: {
+        updateCols(id, state) {
+
+            this.cols[id].isVisible=state
+            console.log( this.cols )
+        }
     }
 }
 </script>
+
+
+<style scoped>
+.box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 240px;
+    overflow: hidden;
+}
+
+.box ul {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.box ul li {
+    border: 1px solid #ddd;
+    padding: 5px;
+    display: flex;
+}
+
+label {margin-left: auto;}
+
+</style>

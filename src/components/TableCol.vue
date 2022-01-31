@@ -23,9 +23,10 @@
 
     </div>
 
-    <rawDisplayer class="col-2" :value="list" title="List" />
+    <!-- <rawDisplayer class="col-2" :value="list" title="List" />
 
-    <rawDisplayer class="col-2" :value="headers" title="Headers" />
+    <rawDisplayer class="col-2" :value="headers" title="Headers" /> -->
+
   </div>
 </template>
 

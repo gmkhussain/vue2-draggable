@@ -2,14 +2,14 @@
   <div id="app">
 
     <Customize />
+        
+    <hr />
+
+    <TableColxRow />
     
     <hr />
 
     <TableColxRowNested />
-
-    <hr />
-
-    <TableColxRow />
 
     <hr />
 

@@ -15,7 +15,7 @@
         </div>
         
           
-        <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
+        <draggable v-model="list" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
           <div v-for="item in list" :key="item.name" class="tr">
             <div class="td" v-for="header in headers" :key="header">
               
@@ -39,9 +39,9 @@
 
     </div>
 
-    <rawDisplayer class="col-2" :value="list" title="List" />
+    <!-- <rawDisplayer class="col-2" :value="list" title="List" />
 
-    <rawDisplayer class="col-2" :value="headers" title="Headers" />
+    <rawDisplayer class="col-2" :value="headers" title="Headers" /> -->
   </div>
 </template>
 
@@ -50,7 +50,7 @@ import draggable from "vuedraggable";
 import jsonLocalData from "../data/data.json";
 
 export default {
-  name: "TablCol",
+  name: "TableColxRow",
   display: "Table Column",
   order: 9,
   components: {
