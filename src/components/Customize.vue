@@ -2,13 +2,18 @@
     <div class="box">
         <ul>
             <li v-for="(col, index) in cols" :key="index">
-                <span>{{col.name}}</span>
-                <label>
+                <label :for="col.name">
+
+                    <span>{{col.name}} : </span>
+                
                     {{col.isVisible}}
+
                     <input type="checkbox"
+                        :disabled="col.name=='id' ? true : false"
+                        :id="col.name"
                         :value="col.isVisible"
                         :checked="col.isVisible ? true : false"
-                        @change="updateCols(index, !col.isVisible)"
+                        @change="updateCols(col, index, !col.isVisible)"
                      />
                 </label>
             </li>
@@ -29,30 +34,45 @@ export default {
                 },
                 {
                     name: "school_name",
-                    isVisible: true
+                    isVisible: false
                 },
                 {
                     name: "date",
-                    isVisible: true
+                    isVisible: false
                 },
                 {
                     name: "status",
-                    isVisible: true
+                    isVisible: false
                 },
                 {
                     name: "rating",
                     isVisible: false
                 }
-            ]
-
+                ],
+            selectedCols: ["id"]
         }
-    },
+    },    
+    props: { getUser:Function },
     methods: {
-        updateCols(id, state) {
 
-            this.cols[id].isVisible=state
-            console.log( this.cols )
-        }
+        updateCols( col , idx, updatedState) {
+
+            this.cols[idx].isVisible=updatedState
+
+            console.log( this.cols[idx].isVisible )
+
+            if( this.cols[idx].isVisible === true ) {
+                this.selectedCols.push(col.name)
+            } else {
+                this.selectedCols.pop(col.name)
+            }
+            
+            console.log( this.selectedCols )
+
+            // Sending data to parent...
+            this.getUser(this.selectedCols)
+        },
+      
     }
 }
 </script>
@@ -72,12 +92,12 @@ export default {
     margin: 0;
 }
 
-.box ul li {
+.box ul li label {
     border: 1px solid #ddd;
     padding: 5px;
     display: flex;
 }
 
-label {margin-left: auto;}
+label input {margin-left: auto;}
 
 </style>

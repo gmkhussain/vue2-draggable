@@ -4,6 +4,11 @@
       
       <h4>Draggable COL x ROW table</h4>
 
+
+      <Customize :getUser="getUserName" />
+        
+      <hr />
+
       <div class="table table-div">
         
         <div class="thead">
@@ -49,20 +54,33 @@
 import draggable from "vuedraggable";
 import jsonLocalData from "../data/data.json";
 
+import Customize from './Customize.vue'
+
 export default {
   name: "TableColxRow",
   display: "Table Column",
   order: 9,
   components: {
-    draggable
+    draggable,
+    Customize
   },
   data() {
     return {
       headers: ["id", "school_name", "date", "status", "rating"],
       list: jsonLocalData,
-      dragging: false
+      dragging: false,
+      userName: ''
     };
+  },
+  methods: {
+
+    getUserName: function(x) {
+      console.log( x )
+      this.headers = x;
+    }
+
   }
+
 };
 </script>
 <style scoped>

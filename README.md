@@ -29,23 +29,25 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 npm install --legacy-peer-deps 👈
 ```
 
-- [x] Table Draggable 
-- - [x] Row
-- - [x] Col
-- - [x] Row x Col
-- - [x] Div Base Table
-- - [x] with Static Inner HTML Element
-- - [ ] with Dynamic Inner HTML Element
-- - [ ] Lock Cell
-- - [ ] Lock inside Table: Not able to drag out of current table
-- - [ ] Preview stick on previous position 
-- - [ ] Preview sync with new position ( High Light LINE on DROP POSITION )
+- :white_check_mark: Table Draggable 
+- - :white_check_mark: Row
+- - :white_check_mark: Col
+- - :white_check_mark: Row x Col
+- - :white_check_mark: Div Base Table
+- - :white_check_mark: with Static Inner HTML Element
+- - :white_large_square: with Dynamic Inner HTML Element
+- - :white_large_square: Lock Cell
+- - :white_large_square: Lock inside Table: Not able to drag out of current table
+- - :white_large_square: Preview stick on previous position 
+- - :white_large_square: Preview sync with new position ( High Light LINE on DROP POSITION )
 
-- [ ] Table Resizer
-- - [ ]
+- :white_large_square: Table Resizer
+- - :white_large_square:
 
 
-- [ ] Customize
-- - [ ] Offcanvas dynamically toggle on click event
-- - [ ] Col Visiable: [ Show / Hide ]
-- - [ ] Col Order: [ Move / Down ]
+- :white_large_square: Customize
+- - :white_large_square: Offcanvas dynamically toggle on click event
+- - :white_check_mark: Col Visiable: [ Show / Hide ]
+- - :white_large_square: Col Order: [ Move / Down ]
+
+- :white_large_square: Vuex
