@@ -4,15 +4,23 @@
       
       <h4>Draggable COL x ROW table</h4>
 
-
-      <Customize :getUser="getUserName" />
+      <Customize :getUser="getUserName" :dataHeader="headers" :dataHeaderAll="headersAll" />
         
       <hr />
 
       <div class="table table-div">
         
         <div class="thead">
-          <draggable v-model="headers" tag="div" class="tr">
+          <!-- <draggable v-model="headersAll" tag="div" class="tr"
+            @change="onTHOrderChange">
+            <div v-for="header in headersAll" :key="header">
+              {{ header }}
+            </div>
+          </draggable> -->
+
+          <draggable v-model="headers" tag="div" class="tr"
+            @change="onTHOrderChange">
+            
             <div v-for="header in headers" :key="header" scope="col" class="th">
               {{ header }}
             </div>
@@ -20,7 +28,8 @@
         </div>
         
           
-        <draggable v-model="list" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
+        <draggable v-model="list" group="people" @start="drag=false" @end="drag=false"
+                tag="div" class="tbody">
           <div v-for="item in list" :key="item.name" class="tr">
             <div class="td" v-for="header in headers" :key="header">
               
@@ -66,17 +75,39 @@ export default {
   },
   data() {
     return {
-      headers: ["id", "school_name", "date", "status", "rating"],
+      headersAll: [
+        {id: 0, name: "id", isVisible : true },
+        {id: 1, name: "school_name", isVisible: true },
+        {id: 2, name: "date", isVisible: false },
+        {id: 3, name: "status", isVisible: true },
+        {id: 4, name: "rating", isVisible: false }
+      ],
+      headers: [], // get Array Data From headersActiveCols() function
+                   // ["id", "school_name", "date", "status", "rating"],
       list: jsonLocalData,
       dragging: false,
       userName: ''
     };
   },
+  mounted() {
+    
+    this.headersActiveCols()
+ 
+  },
   methods: {
+
+    headersActiveCols: function() {
+      console.log( ":::headersActiveCols", this.headers)
+      this.headers = this.headersAll.filter( d => d.isVisible).map( d => d.name)
+    },
 
     getUserName: function(x) {
       console.log( x )
       this.headers = x;
+    },
+
+    onTHOrderChange() {
+      console.log( " >>>" , this.headers )
     }
 
   }

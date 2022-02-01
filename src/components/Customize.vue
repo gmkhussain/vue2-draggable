@@ -23,6 +23,11 @@
                 </li>
             </draggable>
         </ul>
+
+            {{dataHeader}}
+            <hr />
+            {{dataHeaderAll}}
+        
     </div>
 </template>
 
@@ -35,34 +40,17 @@ export default {
     components: {
         draggable
     },
+    props: {
+        getUser:Function,
+        dataHeader:Array,
+        dataHeaderAll: Array
+    },
     data() {
         return {
-            cols: [
-                {
-                    name: "id",
-                    isVisible: true
-                },
-                {
-                    name: "school_name",
-                    isVisible: false
-                },
-                {
-                    name: "date",
-                    isVisible: false
-                },
-                {
-                    name: "status",
-                    isVisible: false
-                },
-                {
-                    name: "rating",
-                    isVisible: false
-                }
-                ],
-            selectedCols: ["id"]
+            cols: this.dataHeaderAll,
+            selectedCols: this.dataHeader
         }
     },  
-    props: { getUser:Function },
     methods: {
         chaneCustomizeOrder() {
 
@@ -72,9 +60,9 @@ export default {
                     { this.selectedCols.push(c.name) }
             })
 
-             // Sending data to parent...
+            // Sending data to parent...
             this.getUser(this.selectedCols)
-            
+
         },
 
         updateCols( col , idx, updatedState) {

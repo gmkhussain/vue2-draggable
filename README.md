@@ -48,7 +48,9 @@ npm install --legacy-peer-deps 👈
 - :white_large_square: Customize
 - - :white_large_square: Offcanvas dynamically toggle on click event
 - - :white_check_mark: Col Visiable: [ Show / Hide ]
-- - :white_large_square: Col Order set from Child  Components: [ Move / Down ]
+- - :white_check_mark: Col Order set from Child  Components: [ Move / Down ]
 - - :white_large_square: Col Order of Child Sync with Parent Component: [ Left / Right ]
+- - - :white_check_mark: Array[] convert to ArrayOfObjects{}
+
 
 - :white_large_square: Vuex
