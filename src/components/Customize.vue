@@ -1,30 +1,40 @@
 <template>
     <div class="box">
         <ul>
-            <li v-for="(col, index) in cols" :key="index">
-                <label :for="col.name">
+            <draggable v-model="cols" tag="div" class="tr"
+                       @change="chaneCustomizeOrder"
+                       @start="drag=true" @end="drag=false">
+                <li v-for="(col, index) in cols" :key="index">
+                    
+                    <label :for="col.name">
 
-                    <span>{{col.name}} : </span>
-                
-                    {{col.isVisible}}
+                        <span>{{col.name}} : </span>
+                    
+                        {{col.isVisible}}
 
-                    <input type="checkbox"
-                        :disabled="col.name=='id' ? true : false"
-                        :id="col.name"
-                        :value="col.isVisible"
-                        :checked="col.isVisible ? true : false"
-                        @change="updateCols(col, index, !col.isVisible)"
-                     />
-                </label>
-            </li>
+                        <input type="checkbox"
+                            :disabled="col.name=='id' ? true : false"
+                            :id="col.name"
+                            :value="col.isVisible"
+                            :checked="col.isVisible ? true : false"
+                            @change="updateCols(col, index, !col.isVisible)"
+                        />
+                    </label>
+                </li>
+            </draggable>
         </ul>
     </div>
 </template>
 
 
 <script>
+import draggable from "vuedraggable";
+
 export default {
     name: "Customize",
+    components: {
+        draggable
+    },
     data() {
         return {
             cols: [
@@ -51,21 +61,32 @@ export default {
                 ],
             selectedCols: ["id"]
         }
-    },    
+    },  
     props: { getUser:Function },
     methods: {
+        chaneCustomizeOrder() {
+
+            this.selectedCols = ["id"];
+            this.cols.map( c => {
+                if ( c.isVisible === true && c.name!=='id' )
+                    { this.selectedCols.push(c.name) }
+            })
+
+             // Sending data to parent...
+            this.getUser(this.selectedCols)
+            
+        },
 
         updateCols( col , idx, updatedState) {
-
+            
             this.cols[idx].isVisible=updatedState
 
-            console.log( this.cols[idx].isVisible )
-
-            if( this.cols[idx].isVisible === true ) {
-                this.selectedCols.push(col.name)
-            } else {
-                this.selectedCols.pop(col.name)
-            }
+            this.selectedCols = ["id"];
+            
+            this.cols.map( c => {
+                if ( c.isVisible === true && c.name!=='id' )
+                    { this.selectedCols.push(c.name) }
+            })
             
             console.log( this.selectedCols )
 
