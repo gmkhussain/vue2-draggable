@@ -36,7 +36,7 @@ npm install --legacy-peer-deps 👈
 - - :white_check_mark: Div Base Table
 - - :white_check_mark: with Static Inner HTML Element
 - - :white_large_square: with Dynamic Inner HTML Element
-- - :white_large_square: Lock Cell
+- - :white_check_mark: Lock Cell
 - - :white_large_square: Lock inside Table: Not able to drag out of current table
 - - :white_large_square: Preview stick on previous position 
 - - :white_large_square: Preview sync with new position ( High Light LINE on DROP POSITION )
@@ -54,3 +54,31 @@ npm install --legacy-peer-deps 👈
 
 
 - :white_large_square: Vuex
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Lock Cell
+#### Disable dragging on specific element using vue-draggable
+```js
+<draggable v-model="myArray" draggable=".item:not(.exclude-this-item)"> 👈
+  <div v-for="element in myArray" :key="element.id" class="item exclude-this-item"> 👈
+    {{element.id}}
+  </div>
+  <div v-for="element in myArray" :key="element.name" class="item">
+    {{element.name}}
+  </div>
+  <div v-for="element in myArray" :key="element.city" class="item">
+    {{element.city}}
+  </div>
+</draggable>
+```
