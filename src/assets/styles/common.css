@@ -29,3 +29,13 @@
   .table-div .td:hover {
     border: 1px solid #979797;
   }
+
+
+
+.sortable-chosen {
+  background: #eee;
+}
+
+.sortable-chosen.sortable-ghost {
+  background: #43a5f5;
+}

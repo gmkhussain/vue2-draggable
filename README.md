@@ -82,3 +82,38 @@ npm install --legacy-peer-deps 👈
   </div>
 </draggable>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Detect components exist
+
+
+```js
+//..
+let componentExists = 'componentName' in this.$options.components
+console.log( componentExists )
+//..
+```
+
+OR
+
+```js
+//..
+,
+  mounted() {
+      console.log( this.$options.components )
+  }
+//..
+```

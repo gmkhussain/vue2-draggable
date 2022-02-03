@@ -3,7 +3,11 @@
         <ul>
             <draggable v-model="cols" tag="div" class="tr"
                        @change="chaneCustomizeOrder"
-                       @start="drag=true" @end="drag=false">
+                       @start="drag=true" @end="drag=false"
+                       :move="onChangeHandler"
+                       :sort="true"
+                       >
+
                 <li v-for="(col, index) in cols" :key="index">
                     
                     <label :for="col.name">
@@ -81,6 +85,11 @@ export default {
             // Sending data to parent...
             this.getUser(this.selectedCols)
         },
+
+
+        onChangeHandler() {
+            console.log( "onChangeHandler works!")
+        }
       
     }
 }
