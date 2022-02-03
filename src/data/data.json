@@ -1,7 +1,7 @@
 [
    {
        "id": 1,
-       "school_name": "ABC High School",
+       "school_name": "ABC College",
        "date": "2020",
        "status": "open",
        "rating": 5,
@@ -46,6 +46,8 @@
    {
     "id": 2,
     "school_name": "XYZ High School",
+    "status": "open",
+    "rating": 4,
     "students": [
                  {
                      "id": 1,
@@ -83,5 +85,92 @@
                      "country": "UK"
                  }
          ]
-    }
+    },
+    {
+        "id": 1,
+        "school_name": "LMN College",
+        "date": "2020",
+        "status": "open",
+        "rating": 5,
+        "students": [
+                     {
+                         "id": 1,
+                         "name": "Alex",
+                         "date": "2018",
+                         "city": "Paris",
+                         "country": "France"
+                     },
+                     {
+                         "id": 2,
+                         "name": "Belly",
+                         "date": "2020",
+                         "city": "Tokyo",
+                         "country": "Japan"
+                     },
+                     {
+                         "id": 3,
+                         "name": "Cody",
+                         "date": "2020",
+                         "city": "Osaka",
+                         "country": "Japan"
+                     },
+                     {
+                         "id": 4,
+                         "name": "Deo",
+                         "date": "2021",
+                         "city": "London",
+                         "country": "UK"
+                     },
+                     {
+                         "id": 5,
+                         "name": "Elle",
+                         "date": "2021",
+                         "city": "Liverpool",
+                         "country": "UK"
+                     }
+             ]
+    },
+    {
+     "id": 2,
+     "school_name": "IJK High School",
+     "status": "open",
+     "rating": 2,
+     "students": [
+                  {
+                      "id": 1,
+                      "name": "Zeo",
+                      "date": "2022",
+                      "city": "New York",
+                      "country": "USA"
+                  },
+                  {
+                      "id": 2,
+                      "name": "Xena",
+                      "date": "2017",
+                      "city": "Tokyo",
+                      "country": "Japan"
+                  },
+                  {
+                      "id": 3,
+                      "name": "Max",
+                      "date": "2019",
+                      "city": "Berlin",
+                      "country": "Germany"
+                  },
+                  {
+                      "id": 4,
+                      "name": "Robert",
+                      "date": "2020",
+                      "city": "London",
+                      "country": "UK"
+                  },
+                  {
+                      "id": 5,
+                      "name": "Andy",
+                      "date": "2021",
+                      "city": "Liverpool",
+                      "country": "UK"
+                  }
+          ]
+     }
 ]

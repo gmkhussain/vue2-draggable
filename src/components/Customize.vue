@@ -2,7 +2,8 @@
     <div class="box">
         <ul>
             <draggable v-model="cols" tag="div" class="tr"
-                       @change="chaneCustomizeOrder"
+                       :list="cols"
+                       @update="customizedReOrdered"
                        @start="drag=true" @end="drag=false"
                        :move="onChangeHandler"
                        :sort="true"
@@ -29,8 +30,6 @@
         </ul>
 
             {{dataHeader}}
-            <hr />
-            {{dataHeaderAll}}
         
     </div>
 </template>
@@ -45,45 +44,27 @@ export default {
         draggable
     },
     props: {
-        getUser:Function,
+        getTHs:Function,
         dataHeader:Array,
-        dataHeaderAll: Array
+        isOpen: Boolean
     },
     data() {
         return {
-            cols: this.dataHeaderAll,
-            selectedCols: this.dataHeader
+            cols: this.dataHeader
         }
     },  
     methods: {
-        chaneCustomizeOrder() {
+        customizedReOrdered(  ) {
 
-            this.selectedCols = ["id"];
-            this.cols.map( c => {
-                if ( c.isVisible === true && c.name!=='id' )
-                    { this.selectedCols.push(c.name) }
-            })
-
-            // Sending data to parent...
-            this.getUser(this.selectedCols)
+            console.log( "cols", this.cols )
 
         },
 
         updateCols( col , idx, updatedState) {
             
+            // Updating visibility
             this.cols[idx].isVisible=updatedState
-
-            this.selectedCols = ["id"];
-            
-            this.cols.map( c => {
-                if ( c.isVisible === true && c.name!=='id' )
-                    { this.selectedCols.push(c.name) }
-            })
-            
-            console.log( this.selectedCols )
-
             // Sending data to parent...
-            this.getUser(this.selectedCols)
         },
 
 

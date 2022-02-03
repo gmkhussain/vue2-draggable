@@ -4,7 +4,15 @@
       
       <h4>Draggable COL x ROW table</h4>
 
-      <Customize :getUser="getUserName" :dataHeader="headers" :dataHeaderAll="headersAll" />
+      <button @click="CustomizeToggler">Customize</button>
+
+      <div v-show="customizeIsOpen">
+          <Customize
+                :getTHs="getTHsName"
+                :dataHeader="headersAll"
+                :isOpen="customizeIsOpen"
+                />
+      </div>
         
       <hr />
 
@@ -18,11 +26,11 @@
             </div>
           </draggable> -->
 
-          <draggable v-model="headers" tag="div" class="tr"
+          <draggable v-model="headersAll" tag="div" class="tr"
             @change="onTHOrderChange">
             
-            <div v-for="header in headers" :key="header" scope="col" class="th">
-              {{ header }}
+            <div v-for="header in headerActiveFunc" :key="header.name" scope="col" class="th">
+              {{ header.name }}
             </div>
           </draggable>
         </div>
@@ -31,18 +39,18 @@
         <draggable v-model="list" group="people" @start="drag=false" @end="drag=false"
                 tag="div" class="tbody">
           <div v-for="item in list" :key="item.name" class="tr">
-            <div class="td" v-for="header in headers" :key="header">
+            <div class="td" v-for="header in headerActiveFunc" :key="header.name">
               
               <div v-if="header=='id'">
-                <h4>~ID</h4> {{item[header]}}
+                {{item[header.name]}}
               </div>
               
               <div v-if="header=='date'">
-                <h4>~DATE</h4> {{item[header]}}
+                {{item[header.name]}}
               </div>
 
               <div v-else>
-                {{ item[header] }}
+                {{ item[header.name] }}
               </div>
 
             </div>
@@ -82,11 +90,11 @@ export default {
         {id: 3, name: "status", isVisible: true },
         {id: 4, name: "rating", isVisible: false }
       ],
-      headers: [], // get Array Data From headersActiveCols() function
-                   // ["id", "school_name", "date", "status", "rating"],
+      headersActive: [],
       list: jsonLocalData,
       dragging: false,
-      userName: ''
+      userName: '',
+      customizeIsOpen: false
     };
   },
   mounted() {
@@ -94,20 +102,29 @@ export default {
     this.headersActiveCols()
  
   },
+  computed: {
+      headerActiveFunc() {
+        return this.headersAll.filter( res => { return res.isVisible } )
+      },
+  },
   methods: {
 
     headersActiveCols: function() {
-      console.log( ":::headersActiveCols", this.headers)
-      this.headers = this.headersAll.filter( d => d.isVisible).map( d => d.name)
+      console.log( ":::headersActiveCols", this.headersActive)
+      this.headersActive = this.headersAll.filter( d => d.isVisible).map( d => d.name)
     },
 
-    getUserName: function(x) {
+    getTHsName: function(x) {
       console.log( x )
-      this.headers = x;
+      this.headersActive = x;
     },
 
     onTHOrderChange() {
-      console.log( " >>>" , this.headers )
+      console.log( " >>>" , this.headersActive )
+    },
+
+    CustomizeToggler( ) {
+      this.customizeIsOpen = !this.customizeIsOpen;
     }
 
   }
