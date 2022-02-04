@@ -1,15 +1,15 @@
 <template>
     <div class="box">
         <ul>
-            <draggable v-model="cols" tag="div" class="tr"
-                       :list="cols"
-                       @update="customizedReOrdered"
+            <draggable v-model="dataHeader" tag="div" class="tr"
+                       :list="dataHeader"
+                       @update="customizeUpdatedOrder"
                        @start="drag=true" @end="drag=false"
-                       :move="onChangeHandler"
+                       :move="onMoveHandler"
                        :sort="true"
                        >
 
-                <li v-for="(col, index) in cols" :key="index">
+                <li v-for="(col, index) in dataHeader" :key="index">
                     
                     <label :for="col.name">
 
@@ -22,7 +22,7 @@
                             :id="col.name"
                             :value="col.isVisible"
                             :checked="col.isVisible ? true : false"
-                            @change="updateCols(col, index, !col.isVisible)"
+                            @change="onChangeHandler(col, index, !col.isVisible)"
                         />
                     </label>
                 </li>
@@ -46,30 +46,29 @@ export default {
     props: {
         getTHs:Function,
         dataHeader:Array,
-        isOpen: Boolean
+        isOpen:Boolean
     },
-    data() {
-        return {
-            cols: this.dataHeader
-        }
-    },  
+    // data() {
+    //     return {
+    //         cols: this.dataHeader
+    //     }
+    // },  
     methods: {
-        customizedReOrdered(  ) {
-
-            console.log( "cols", this.cols )
-
+        customizeUpdatedOrder(  ) {
+            // console.log( "cols", this.cols )
         },
 
-        updateCols( col , idx, updatedState) {
-            
+        onChangeHandler( col , idx, updatedState) {
+
+            console.log ( "onChangeHandler", col , idx, updatedState )
             // Updating visibility
-            this.cols[idx].isVisible=updatedState
+             this.dataHeader[idx].isVisible=updatedState
             // Sending data to parent...
         },
 
 
-        onChangeHandler() {
-            console.log( "onChangeHandler works!")
+        onMoveHandler() {
+            console.log( "onMoveHandler works!")
         }
       
     }

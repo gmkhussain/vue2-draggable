@@ -19,27 +19,35 @@
       <div class="table table-div">
         
         <div class="thead">
-          <!-- <draggable v-model="headersAll" tag="div" class="tr"
-            @change="onTHOrderChange">
-            <div v-for="header in headersAll" :key="header">
-              {{ header }}
-            </div>
-          </draggable> -->
 
-          <draggable v-model="headersAll" tag="div" class="tr"
-            @change="onTHOrderChange">
+          <draggable  tag="div" class="tr"
+                      v-model="headersAll" 
+                      @change="onTHOrderChange">
             
-            <div v-for="header in headerActiveFunc" :key="header.name" scope="col" class="th">
-              {{ header.name }}
+            <div  v-for="header in headersAll" scope="col" class="th"
+                  :key="header.name"
+                  v-show="header.isVisible"
+                  :data-isVisible="header.isVisible">
+
+                    {{ header.name }}
+
             </div>
+
           </draggable>
         </div>
         
           
         <draggable v-model="list" group="people" @start="drag=false" @end="drag=false"
                 tag="div" class="tbody">
-          <div v-for="item in list" :key="item.name" class="tr">
-            <div class="td" v-for="header in headerActiveFunc" :key="header.name">
+          <div  class="tr"
+                v-for="item in list"
+                :key="item.name"
+                >
+
+            <div class="td" v-for="header in headersAll"
+                            :key="header.name"
+                            v-show="header.isVisible"
+                            >
               
               <div v-if="header=='id'">
                 {{item[header.name]}}
@@ -115,10 +123,11 @@ export default {
     },
 
     getTHsName: function(x) {
-      console.log( x )
+      console.log( "Data From Child", x )
       this.headersActive = x;
     },
 
+    // Debugging Only
     onTHOrderChange() {
       console.log( " >>>" , this.headersActive )
     },
