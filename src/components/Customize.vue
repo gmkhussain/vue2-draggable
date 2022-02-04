@@ -4,7 +4,8 @@
             <draggable v-model="dataHeader" tag="div" class="tr"
                        :list="dataHeader"
                        @update="customizeUpdatedOrder"
-                       @start="drag=true" @end="drag=false"
+                       @start="drag=true"
+                       @end="drag=false"
                        :move="onMoveHandler"
                        :sort="true"
                        >

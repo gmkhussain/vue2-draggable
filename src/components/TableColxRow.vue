@@ -22,14 +22,21 @@
 
           <draggable  tag="div" class="tr"
                       v-model="headersAll" 
+                      handle=".vd-handler"
                       @change="onTHOrderChange">
             
-            <div  v-for="header in headersAll" scope="col" class="th"
+            <div  v-for="(header, index) in headersAll"
+                  scope="col" :class="'th td-'+header.name"
                   :key="header.name"
                   v-show="header.isVisible"
-                  :data-isVisible="header.isVisible">
+                  :data-isVisible="header.isVisible"
+                  :data-colindex="index"
+                  :style="`width: ${header.width}`"
+                  >
 
+                  <span class="vd-handler">
                     {{ header.name }}
+                  </span>
 
             </div>
 
@@ -37,16 +44,23 @@
         </div>
         
           
-        <draggable v-model="list" group="people" @start="drag=false" @end="drag=false"
-                tag="div" class="tbody">
+        <draggable tag="div" class="tbody"
+                v-model="list"
+                group="people"
+                @start="drag=false"
+                @end="drag=false"
+                >
+
           <div  class="tr"
                 v-for="item in list"
                 :key="item.name"
                 >
 
-            <div class="td" v-for="header in headersAll"
+            <div :class="'td td-'+header.name"
+                      v-for="(header, index) in headersAll"
                             :key="header.name"
                             v-show="header.isVisible"
+                            :data-colindex="index"
                             >
               
               <div v-if="header=='id'">
@@ -60,6 +74,7 @@
               <div v-else>
                 {{ item[header.name] }}
               </div>
+              
 
             </div>
           </div>
@@ -92,11 +107,12 @@ export default {
   data() {
     return {
       headersAll: [
-        {id: 0, name: "id", isVisible : true },
-        {id: 1, name: "school_name", isVisible: true },
-        {id: 2, name: "date", isVisible: false },
-        {id: 3, name: "status", isVisible: true },
-        {id: 4, name: "rating", isVisible: false }
+        {id: 0, name: "id", isVisible : true, width: '320px' },
+        {id: 1, name: "school_name", isVisible: true, width: '120px' },
+        {id: 2, name: "date", isVisible: false, width: '120px' },
+        {id: 3, name: "status", isVisible: true, width: '120px' },
+        {id: 4, name: "rating", isVisible: false, width: '120px' },
+        {id: 5, name: "BLANK", isVisible: true, width: '120px' }
       ],
       headersActive: [],
       list: jsonLocalData,
@@ -105,11 +121,7 @@ export default {
       customizeIsOpen: false
     };
   },
-  mounted() {
-    
-    this.headersActiveCols()
- 
-  },
+
   computed: {
       headerActiveFunc() {
         return this.headersAll.filter( res => { return res.isVisible } )
@@ -127,21 +139,135 @@ export default {
       this.headersActive = x;
     },
 
-    // Debugging Only
-    onTHOrderChange() {
-      console.log( " >>>" , this.headersActive )
-    },
-
     CustomizeToggler( ) {
       this.customizeIsOpen = !this.customizeIsOpen;
-    }
+    },
 
-  }
+        
+    
+      tableResizerFunc () {
+            
+            console.log( "tableResizerFunc RUNNED! ")
+
+            var thElm;
+            var currIndex;
+            var startOffset;
+
+
+            Array.prototype.forEach.call(
+            
+              document.querySelectorAll(".table .th"),
+            
+              function (th, index) {
+                  th.style.position = 'relative';
+                  th.setAttribute('data-colindex', index )
+                  
+                  if( th.querySelector('.resizeHandler') ) {
+                    console.log("Hai Ga")
+                  } else {
+                  
+                  var grip = document.createElement('div');
+                      grip.setAttribute("class", `resizeHandler`);
+                      grip.innerHTML = "&nbsp;";
+                      grip.addEventListener('mousedown', function (e) {
+                          thElm = th;
+                          currIndex = index;
+                          
+                          startOffset = th.offsetWidth - e.pageX;
+                      });
+
+                      th.appendChild(grip);
+                  }
+
+
+              });
+
+              document.addEventListener('mousedown', function () {
+                  if (thElm) {
+                    thElm.setAttribute('data-active', 'true')
+                  }
+              })
+        
+              document.addEventListener('mouseup', function () {
+                  if (thElm) {
+                    thElm.setAttribute('data-active', 'false')
+                  }
+              })
+        
+              document.addEventListener('mousemove', function (e) {
+                if (thElm) {
+                    console.log( currIndex )
+                    document.querySelectorAll("[data-colindex='"+currIndex+"']").forEach( div => {
+                        div.style.width = startOffset + e.pageX + 'px';
+                    })
+                }
+              });
+
+              document.addEventListener('mouseup', function () {
+                  thElm = undefined;
+              });
+        
+        },
+
+
+
+
+    
+    // Debugging Only
+    onTHOrderChange() {
+      console.log( "onTHOrderChange() ->" , this.headersActive )
+
+      this.tableResizerFunc()
+    },
+
+  
+
+  },
+  mounted() {
+    
+    this.headersActiveCols()
+    
+    this.tableResizerFunc()
+  },
 
 };
 </script>
-<style scoped>
+
+
+<style >
 .buttons {
   margin-top: 35px;
 }
+
+
+
+
+
+
+.resizeHandler {
+    background: transparent;
+    position: absolute;
+    right: -2px;
+    top: 0px;
+    z-index: 888;
+    height: 100%;
+    width: 5px;
+    cursor: col-resize;
+}
+
+.resizeHandler:hover {
+    background: #007bff;
+}
+
+        
+[data-active="true"] .resizeHandler:before  {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 2px;
+    height: 100vh;
+    background: blue;
+    width: 1px;
+}
+
 </style>

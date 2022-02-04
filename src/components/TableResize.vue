@@ -2,7 +2,7 @@
     <div>
         <h4>v-columns-resizable</h4>
         <div class="table table-div" >
-            <div class="thead" v-columns-resizable>
+            <div class="thead" v-columns-resizable >
                 <div class="tr">
                     <div class="th" width="50%">name</div>
                     <div class="th" width="25%">age</div>
