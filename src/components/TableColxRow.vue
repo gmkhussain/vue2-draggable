@@ -16,7 +16,7 @@
         
       <hr />
 
-      <div class="table table-div">
+      <div class="table table-div table-resizer">
         
         <div class="thead">
 
@@ -47,7 +47,7 @@
         <draggable tag="div" class="tbody"
                 v-model="list"
                 group="people"
-                @start="drag=false"
+                @start="drag=true"
                 @end="drag=false"
                 >
 
@@ -94,7 +94,9 @@
 import draggable from "vuedraggable";
 import jsonLocalData from "../data/data.json";
 
-import Customize from './Customize.vue'
+import Customize from './Customize.vue';
+
+import tableResizerFunc from '../plugins/table_resizer';
 
 export default {
   name: "TableColxRow",
@@ -143,76 +145,7 @@ export default {
       this.customizeIsOpen = !this.customizeIsOpen;
     },
 
-        
-    
-      tableResizerFunc () {
-            
-            console.log( "tableResizerFunc RUNNED! ")
 
-            var thElm;
-            var currIndex;
-            var startOffset;
-
-
-            Array.prototype.forEach.call(
-            
-              document.querySelectorAll(".table .th"),
-            
-              function (th, index) {
-                  th.style.position = 'relative';
-                  th.setAttribute('data-colindex', index )
-                  
-                  if( th.querySelector('.resizeHandler') ) {
-                    console.log("Hai Ga")
-                  } else {
-                  
-                  var grip = document.createElement('div');
-                      grip.setAttribute("class", `resizeHandler`);
-                      grip.innerHTML = "&nbsp;";
-                      grip.addEventListener('mousedown', function (e) {
-                          thElm = th;
-                          currIndex = index;
-                          
-                          startOffset = th.offsetWidth - e.pageX;
-                      });
-
-                      th.appendChild(grip);
-                  }
-
-
-              });
-
-              document.addEventListener('mousedown', function () {
-                  if (thElm) {
-                    thElm.setAttribute('data-active', 'true')
-                  }
-              })
-        
-              document.addEventListener('mouseup', function () {
-                  if (thElm) {
-                    thElm.setAttribute('data-active', 'false')
-                  }
-              })
-        
-              document.addEventListener('mousemove', function (e) {
-                if (thElm) {
-                    console.log( currIndex )
-                    document.querySelectorAll("[data-colindex='"+currIndex+"']").forEach( div => {
-                        div.style.width = startOffset + e.pageX + 'px';
-                    })
-                }
-              });
-
-              document.addEventListener('mouseup', function () {
-                  thElm = undefined;
-              });
-        
-        },
-
-
-
-
-    
     // Debugging Only
     onTHOrderChange() {
       console.log( "onTHOrderChange() ->" , this.headersActive )
@@ -220,11 +153,11 @@ export default {
       this.tableResizerFunc()
     },
 
-  
+    // Plugin
+    tableResizerFunc,
 
   },
   mounted() {
-    
     this.headersActiveCols()
     
     this.tableResizerFunc()
