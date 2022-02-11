@@ -52,7 +52,11 @@ export default function tableResizerFunc() {
         else if ( currCellWidth <= 100 ) { currCellWidth = 100 }
 
         document.querySelectorAll("[data-colindex='"+currIndex+"'] .resizeHandler").forEach( currentIndexDivs => {
-          currentIndexDivs.style.left = currCellWidth + 'px';
+          
+          if( currCellWidth ) {
+            currentIndexDivs.style.left = currCellWidth + 'px';
+            
+          }
         })
       }
 
@@ -68,7 +72,11 @@ export default function tableResizerFunc() {
          
 
           // console.log( {width} )
-          currentIndexDivs.style.width = currCellWidth + 'px';
+          if( currCellWidth ) {
+            currentIndexDivs.style.width = currCellWidth + 'px';
+            currCellWidth = undefined;
+          }
+          
        });
 
 
