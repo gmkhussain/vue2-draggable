@@ -1,48 +1,19 @@
 <template>
   <div id="app">
 
-
-    <TableColxRow />
-    
-    <hr />
-
-    <TableColxRowNested />
-
-    <hr />
-
-    <TableResize />
-
-    <hr />
-
-    <TableRow msg="table" />
-
-    <hr />
-
-    <TableCol />
+    <Header />
+    <router-view/>
 
   </div>
 </template>
 
 <script>
-
-import TableColxRowNested from './components/TableColxRowNested.vue'
-
-import TableRow from './components/TableRow.vue'
-import TableCol from './components/TableCol.vue'
-import TableColxRow from './components/TableColxRow.vue'
-import TableResize from './components/TableResize.vue'
-
-
+import Header from '@/views/Header.vue'
 export default {
   name: 'App',
   components: {
-    TableRow,
-    TableCol,
-    TableColxRow,
-    TableResize,
-    TableColxRowNested
+    Header
   }
-  
 }
 </script>
 
