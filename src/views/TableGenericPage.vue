@@ -19,20 +19,31 @@
         
           
         <draggable v-model="list" group="people" @start="drag=true" @end="drag=false" tag="div" class="div">
-          <div v-for="item in list" :key="item.name" class="div">
-            <div class="tbody">
+          <div v-for="(item, idx) in list" :key="idx" class="div">
+            
                 <div class="tr">
                     <div class="td" v-for="header in headers" :key="header">{{ item[header] }}</div>
                 </div>
-            </div>
+            
+                    
+            
+                <b-button v-b-toggle="'collapse-'+idx" variant="primary">Toggle Collapse</b-button>
+                <b-collapse :id="'collapse-'+idx" class="mt-2">
+                    <b-card>
 
-            <!-- <div class="tbody">
-                <div class="tr">
-                    <div class="td" v-for="s in students" :key="s.id">
-                        {{s.id}} | {{s.name}}
-                    </div>
-                </div>
-            </div> -->
+                        <draggable v-model="list2" group="people" @start="drag=true" @end="drag=false" tag="div" class="tbody">
+                            
+                            <div class="tr" v-for="itemOutter2 in list2" :key="itemOutter2.id">
+                                <div class="td" v-for="(itemInner2, idx2) in headers" :key="itemInner2">
+                                    {{ idx2 }} | {{ itemOutter2[itemInner2] }}
+                                </div>
+                            </div>
+                        
+                        </draggable>
+                        
+                    </b-card>
+                </b-collapse>
+                
           </div>
         </draggable>
 
@@ -41,14 +52,13 @@
 
     </div>
 
-
   </div>
 </template>
 
 <script>
 import draggable from "vuedraggable";
 import jsonLocalData from "@/data/data.json";
-import jsonStudentData from "@/data/students.json";
+import jsonLocalData2 from "@/data/data2.json";
  
 export default {
   name: "TableGeneric",
@@ -61,7 +71,7 @@ export default {
     return {
       headers: ["id", "school_name", "date", "status", "rating"],
       list: jsonLocalData,
-      students: jsonStudentData,
+      list2: jsonLocalData2,
       dragging: false
     };
   }
